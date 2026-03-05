@@ -1,7 +1,7 @@
-export default function ({ actors, genre }) {
+export default function ({ actors, view }) {
 
     return (
-        <div className="row row-cols-1 row-cols-md-2 g-4 mt-4">
+        <div className={view ? "row g-4 mt-4" : "row row-cols-1 row-cols-md-2 g-4 mt-4"}>
             {actors.map((actor) => {
                 return (
                     <div className="col col-sm-12" key={actor.id}>
@@ -20,7 +20,7 @@ export default function ({ actors, genre }) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="card-footer col-12">Known for: {genre === "actors" ? actor.known_for : actor.most_famous_movies}</div>
+                            <div className="card-footer col-12">Known for: {actor.known_for ? actor.known_for.join(', ') : actor.most_famous_movies.join(', ')}</div>
                         </div>
                     </div>
                 )
